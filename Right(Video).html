@@ -1,0 +1,44 @@
+<html>
+<head>
+<style>
+.videoContainer 
+{	
+    position:right;
+    height:80%;
+    width:100%;
+    overflow: hidden;
+}
+
+video::-internal-media-controls-play-button {
+    display:none;
+}
+
+
+</style>
+
+
+<script>
+function playPause()
+ { 
+ var myVideo = document.getElementById("video");
+        myVideo.play();
+	}
+
+</script>
+</head>
+<body bgcolor="black">
+ </video>
+<h2 style="color:white;font-family:monotype corsiva; text-align:center;"> VIDEO OF THE WEEK </H2>
+   <button onclick="playPause()" value="Play" name="Play"><h4>&nbsp &nbsp Play  &nbsp &nbsp    <h4> </button>
+<video width="10" height="10"   class="videoContainer" id="video">
+  <source src="Video.mp4" type="video/mp4">
+  </source>
+  
+
+
+ 
+
+
+</body>
+
+</html>

@@ -1,0 +1,218 @@
+<html>
+<head>
+<style>
+.c{
+color:red;
+
+}
+
+body
+{
+font-family:verdana;
+font-weight:bold;
+font-size:30px;
+color:black;
+}
+
+</style>
+
+<script>
+var count=8;
+
+var d=new Date;
+document.getElementById("da").innerHTML=d;
+
+function f1()
+{
+var v1=document.getElementsByName('name')[0].value;
+reg=/[^a-z]+/i;
+
+if(v1.length==0)
+{
+document.getElementById("fname").innerHTML="Enter First Name";
+}else if(reg.test(v1)==true)
+{
+document.getElementById("fname").innerHTML="Enter Valid Name";
+}else 
+{
+
+count--;
+document.getElementById("fname").innerHTML=" ";
+
+}
+
+
+}
+
+function f2()
+{
+var v2=document.getElementsByName('lname')[0].value;
+reg=/[^a-z]+/i;
+if(v2.length == 0 )
+{
+document.getElementById("laname").innerHTML="Enter Last Name";
+}else if(reg.test(v2)==true)
+{
+document.getElementById("laname").innerHTML="Enter Valid Name";
+}
+else
+{
+
+count--;
+document.getElementById("laname").innerHTML="";
+
+}
+
+
+}
+
+
+function f3()
+{
+var v3=document.getElementsByName('age')[0].value;
+reg=/\D/;
+if(reg.test(v3)==true)
+{
+document.getElementById("age").innerHTML="Enter Valid Age";
+}
+else if(v3 < 18 || v3 > 120)
+{
+document.getElementById("age").innerHTML="Enter Valid Age";
+}else
+{
+
+count--;
+document.getElementById("age").innerHTML="";
+
+}
+}
+
+function f4()
+{
+var v4=document.getElementsByName('email')[0].value;
+var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+if(re.test(v4)==true)
+{
+
+count--;
+document.getElementById("emaili").innerHTML="";
+
+}else
+{
+document.getElementById("emaili").innerHTML="Enter Valid Email ID";
+}
+
+}
+
+
+
+function func()
+{
+
+//var v1=document.getElementById('name')[0].value;
+var v1=document.getElementsByName('name')[0].value;
+var v2=document.getElementsByName('lname')[0].value;
+var v3=document.getElementsByName('age')[0].value;
+var v4=document.getElementsByName('email')[0].value;
+var v5=document.getElementsByName('tcity')[0].value;
+var v6=document.getElementsByName('video')[0].value;
+
+
+
+
+localStorage.setItem("firstname", v1);
+var firstname = localStorage.getItem("firstname");
+
+localStorage.setItem("lastname",v2);
+var lastname = localStorage.getItem("lastname");
+//document.write("inside");
+localStorage.setItem("emailid", v4);
+var email = localStorage.getItem("emailid");
+localStorage.setItem("city", v5);
+var c = localStorage.getItem("city");
+localStorage.setItem("age", v3);
+var a = localStorage.getItem("age");
+localStorage.setItem("videochoice", v6);
+var video = localStorage.getItem("videochoice");
+if(count==0)
+{
+document.writeln("FIRST NAME:"+firstname+"  </br> ");
+document.writeln("LAST NAME:"+lastname+"</br>");
+document.writeln("EMAIL ID:"+ email+"</br>");
+document.writeln("CITY:"+c+"<br>");
+document.writeln("AGE:"+a+"</br>");
+document.writeln("VIDEO CHOICE:"+video+"</br>");
+}
+
+
+}
+function foo()
+{
+//document.write("here");
+var cit=document.getElementsByName('city')[0].value;
+document.getElementById("t").value=cit;
+}
+
+</script>
+</head>
+
+<body bgcolor="lightcyan"  >
+
+<form name="details" >
+<table cellspacing="35">
+<tr>
+<td>FIRST NAME</td>
+<td><input type="textbox" name="name"  id="name" onblur="f1()" onchange="f1()"/>
+<td id="fname" class="c"></td>
+</tr>
+<tr>
+<td>LAST NAME</td>
+<td><input type="textbox" name="lname" id="lname" onblur="f2()" onchange="f2()"></td>
+<td id="laname" class="c"></td>
+</tr>
+
+<tr>
+<td>EMAIL ID</td>
+<td><input type="textbox" name="email" onblur="f4()" onchange="f4()"/>
+<td id="emaili" class="c"></td>
+</tr>
+
+<tr>
+<td>CITY</td>
+<td><input type="textbox" id="t" name="tcity" value="" width="2" size="10">
+<select name="city" onchange="foo()" >
+<option>None</option>
+<option>Bangalore</option>
+<option>Hyderabad</option>
+<option>Chennai</option>
+<option>Kolkata</option>
+<option>Delhi</option>
+<option>Mumbai</option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td>AGE</td>
+<td><input type="textbox" name="age" onblur="f3()" onchange="f3()" /></td>
+<td id="age" class="c"></td>
+</tr>
+
+<tr>
+<td>VIDEO CHOICE </td>
+<td><input type="textbox" name="video"/></td>
+</tr>
+
+
+
+<tr>
+<td></td>
+<td>
+<input type="button" name="submit" value=" SUBMIT  "  size="100" onclick="func()"/>
+</td>
+</tr> 
+</table>
+</form>
+</body>
+
+</html>
